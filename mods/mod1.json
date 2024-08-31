@@ -6,17 +6,6 @@
     "tags": [
         "qol",
         "content",
-        "jokers",
-        "tarots"
-    ],
-    "versions": [
-        {
-            "name": "Beta",
-            "branch": "main"
-        },
-        {
-            "name": "Latest",
-            "release": "latest"
-        }
+        "jokers"
     ]
 }
