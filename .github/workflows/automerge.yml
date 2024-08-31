@@ -25,7 +25,10 @@ jobs:
       env: 
         ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
       run: |
-        [[${#ALL_CHANGED_FILES} -gt 1]] && { echo "Too many files changed" ; exit 1 }
+        if [[ ${#ALL_CHANGED_FILES} -gt 1 ]] ; then
+          echo "Too many files changed"
+          exit 1
+        fi
     - id: automerge
       name: automerge
       uses: "pascalgn/automerge-action@v0.16.3"
