@@ -36,6 +36,5 @@ jobs:
       #  contents: write
       env:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        MERGE_LABELS: "automerge,!work in progress"
-        MERGE_REMOVE_LABELS: "automerge"
+        MERGE_LABELS: "!work in progress,!meta"
         MERGE_COMMIT_MESSAGE: "pull-request-description"
