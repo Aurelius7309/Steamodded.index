@@ -25,8 +25,8 @@ jobs:
       env: 
         ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
       run: |
-        echo "${ALL_CHANGED_FILES[@]}"
-        if [[ ${#ALL_CHANGED_FILES[@]} -gt 1 ]] ; then
+        changed_files = ($ALL_CHANGED_FILES)
+        if [[ ${#changed_files[@]} -gt 1 ]] ; then
           echo "Too many files changed"
           exit 1
         fi
