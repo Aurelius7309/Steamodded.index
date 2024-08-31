@@ -20,12 +20,12 @@ jobs:
     - id: files
       uses: "jitterbit/get-changed-files@v1"
     - run: |
-        i = 0
+        declare -i i=0
         readarray -t files <<<"$(jq -r '.[]' <<<'${{ steps.files.outputs.all }}')"
         for changed_file in ${files[@]}; do
-          i = $i + 1
+          i = $((i + 1))
         done
-        if [$i>1] then exit 1 fi
+        if [$i -gt 1] then exit 1 fi
     - id: automerge
       name: automerge
       uses: "pascalgn/automerge-action@v0.16.3"
