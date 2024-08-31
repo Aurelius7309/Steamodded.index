@@ -1,0 +1,11 @@
+{
+  "name": "Six Suits"
+  "description": "Adds the Stars and Moons suits and a new Spectrum hand type",
+  "github": "https://github.com/Aurelius/7309/SixSuits",
+  "versions": [
+    {
+      "name": "Latest",
+      "branch": "master",
+    },
+  ]
+}
