@@ -20,8 +20,8 @@ jobs:
     - id: files
       uses: "jitterbit/get-changed-files@v1"
     - run: |
-        declare -i i=0
         readarray -t files <<<"$(jq -r '.[]' <<<'${{ steps.files.outputs.all }}')"
+        i=0
         for changed_file in ${files[@]}; do
           i = $((i + 1))
         done
