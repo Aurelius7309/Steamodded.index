@@ -32,9 +32,7 @@ jobs:
     - id: automerge
       name: automerge
       uses: "pascalgn/automerge-action@v0.16.3"
-      #permissions:
-      #  contents: write
       env:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         MERGE_LABELS: "!work in progress,!meta"
-        MERGE_COMMIT_MESSAGE: "pull-request-description"
+        MERGE_COMMIT_MESSAGE: "Auto merge #{pullRequest.number}"
