@@ -19,6 +19,8 @@ jobs:
     steps:
     - id: files
       uses: "jitterbit/get-changed-files@v1"
+      with:
+        format: 'json'
     - run: |
         readarray -t files <<<"$(jq -r '.[]' <<<'${{ steps.files.outputs.all }}')"
         i=0
