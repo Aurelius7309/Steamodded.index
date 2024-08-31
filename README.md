@@ -1,1 +1,1 @@
-"# Steamodded Index" 
+# Steamodded Index
