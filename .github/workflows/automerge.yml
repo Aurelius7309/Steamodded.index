@@ -25,11 +25,7 @@ jobs:
       env: 
         ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
       run: |
-        i=0
-        for changed_file in ${ALL_CHANGED_FILES}; do
-          i = $((i + 1))
-        done
-        if [$i -gt 1] then exit 1 fi
+        if [${#ALL_CHANGED_FILES} -gt 1] then exit 1 fi
     - id: automerge
       name: automerge
       uses: "pascalgn/automerge-action@v0.16.3"
