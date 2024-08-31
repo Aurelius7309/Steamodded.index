@@ -1,0 +1,38 @@
+name: automerge
+on:
+  pull_request:
+    types:
+    - labeled
+    - unlabeled
+    - synchronize
+    - opened
+    - edited
+    - ready_for_review
+    - reopened
+    - unlocked
+    paths:
+      - 'mods/*.json'
+      - '!(!mods)/**'
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+    - id: files
+      uses: "jitterbit/get-changed-files@v1"
+    - run: |
+        i = 0
+        readarray -t files <<<"$(jq -r '.[]' <<<'${{ steps.files.outputs.all }}')"
+        for changed_file in ${files[@]}; do
+          i = $i + 1
+        done
+        if [$i>1] then exit 1 fi
+    - id: automerge
+      name: automerge
+      uses: "pascalgn/automerge-action@v0.16.3"
+      #permissions:
+      #  contents: write
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        MERGE_LABELS: "automerge,!work in progress"
+        MERGE_REMOVE_LABELS: "automerge"
+        MERGE_COMMIT_MESSAGE: "pull-request-description"
