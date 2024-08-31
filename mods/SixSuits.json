@@ -5,7 +5,7 @@
   "versions": [
     {
       "name": "Latest",
-      "branch": "master",
-    },
+      "branch": "master"
+    }
   ]
 }
