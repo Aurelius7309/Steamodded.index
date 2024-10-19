@@ -36,4 +36,5 @@ jobs:
       run: gh pr merge --auto --merge "$PR_URL"
       env:
         PR_URL: ${{github.event.pull_request_target.html_url}}
-        GH_TOKEN: ${{secrets.PAT_GITHUB_ACTIONS}}
+        GITHUB_TOKEN: ${{secrets.PAT_GITHUB_ACTIONS}}
+        GH_TOKEN: ${{github.token}}
