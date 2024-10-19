@@ -13,6 +13,8 @@ on:
     paths:
       - 'mods/*.json'
       - '!(!mods)/**'
+    branches:
+      - main
 jobs:
   automerge:
     runs-on: ubuntu-latest
