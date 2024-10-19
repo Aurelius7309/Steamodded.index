@@ -28,9 +28,14 @@ jobs:
     - name: Count changed files
       env: 
         COUNT: ${{ steps.changed-files.outputs.all_changed_and_modified_files_count }}
+        DELETED: ${{steps.changed-files.outputs.deleted_files_count}}
       run: |
         if [[ ${COUNT} -gt 1 ]] ; then
           echo "Too many files changed"
+          exit 1
+        fi
+        if [[ ${DELETED} -gt 0 ]] ; then
+          echo "Automatic deletion of files is forbidden"
           exit 1
         fi
     - id: automerge
